@@ -23,15 +23,7 @@ const ENV_REFRESH_TOKEN = process.env.XERO_REFRESH_TOKEN;
 const TOKEN_STORE = process.env.XERO_TOKEN_STORE || "";
 
 // Read-only scopes used for both the browser sign-in flow and refreshes.
-const XERO_SCOPES = [
-  "openid",
-  "profile",
-  "email",
-  "offline_access",
-  "accounting.transactions.read",
-  "accounting.contacts.read",
-  "accounting.settings.read",
-].join(" ");
+const XERO_SCOPES = process.env.XERO_SCOPES || "openid profile email offline_access accounting.invoices.read accounting.contacts.read accounting.payments.read";
 
 // Build the Xero consent URL (used by the server's /auth route).
 function getAuthorizeUrl(redirectUri, state) {
